@@ -13,19 +13,19 @@ function Navbar() {
             />
           </div>
           <ul className="flex text-2xl gap-3 font-serif cursor-pointer">
-            <li className="hover:text-white  p-3 rounded-lg ">
+            <li className="  p-3 rounded-lg ">
               <NavLink 
               to="/"
               className={({isActive}) =>
-                ` ${isActive ? "text-orange-700" : "text-gray-700"} hover:text-white `
+                ` ${isActive ? "text-orange-700" : "text-gray-700"}  `
             }
               >Home</NavLink>
             </li>
-            <li className="hover:text-white  p-3 rounded-lg">
+            <li className=" p-3 rounded-lg">
               <NavLink 
               to="/About"
               className={({isActive}) =>
-                ` ${isActive ? "text-orange-700" : "text-gray-700"} hover:text-white `
+                ` ${isActive ? "text-orange-700" : "text-gray-700"} `
             }
               >About</NavLink>
             </li>
