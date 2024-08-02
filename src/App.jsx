@@ -74,6 +74,7 @@ function App() {
             </div>
           </div>
         ))}
+      <p className="border-2 border-black border-solid mb-3"></p>
       </div>
       )}
     </>
