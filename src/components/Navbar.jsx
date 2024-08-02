@@ -13,7 +13,7 @@ function Navbar() {
             />
           </div>
           <ul className="flex text-2xl gap-3 font-serif cursor-pointer">
-            <li className="hover:text-white hover:bg-[#292B2C] p-3 rounded-lg ">
+            <li className="hover:text-white  p-3 rounded-lg ">
               <NavLink 
               to="/"
               className={({isActive}) =>
@@ -21,7 +21,7 @@ function Navbar() {
             }
               >Home</NavLink>
             </li>
-            <li className="hover:text-white hover:bg-[#292B2C] p-3 rounded-lg">
+            <li className="hover:text-white  p-3 rounded-lg">
               <NavLink 
               to="/About"
               className={({isActive}) =>
