@@ -31,6 +31,7 @@ function App() {
    
  const handleHealth=async()=>{
   try{
+    setLoading(true)    
     const newresponse = await axios.get(
       `https://api.nytimes.com/svc/topstories/v2/Health.json?api-key=AOFvSfzLSamsmw3uggBysZ3UgrIu2Kqk`    
     );
@@ -45,6 +46,7 @@ function App() {
  }
  const handlehome=async()=>{
   try{
+    setLoading(true)
     const newresponse = await axios.get(
       `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=AOFvSfzLSamsmw3uggBysZ3UgrIu2Kqk`    
     );
@@ -59,6 +61,7 @@ function App() {
  }
  const handletechnology=async()=>{
   try{
+    setLoading(true)   
     const newresponse = await axios.get(
       `https://api.nytimes.com/svc/topstories/v2/technology.json?api-key=AOFvSfzLSamsmw3uggBysZ3UgrIu2Kqk`    
     );
@@ -73,6 +76,7 @@ function App() {
  }
  const handlebusiness=async()=>{
   try{
+    setLoading(true)   
     const newresponse = await axios.get(
       `https://api.nytimes.com/svc/topstories/v2/business.json?api-key=AOFvSfzLSamsmw3uggBysZ3UgrIu2Kqk`    
     );
