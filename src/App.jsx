@@ -3,7 +3,6 @@ import axios from "axios";
 import './App.css'
 import Navbar from './components/Navbar'
 import Loader from "./components/Loader";
-import { Link } from "react-router-dom";
 
 function App() {
   const [news, setNews] = useState([]);
@@ -13,7 +12,6 @@ function App() {
   useEffect(() => {
     const fetchNews = async () => {
       try{
-      // setLoading(true);
       const response = await axios.get(
         `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=AOFvSfzLSamsmw3uggBysZ3UgrIu2Kqk`    
       );
@@ -28,7 +26,9 @@ function App() {
     };
     fetchNews();
   }, []);
-  
+   
+
+
   if (error) {
     return (
       <div className="w-full h-screen ">
@@ -45,7 +45,8 @@ function App() {
       </div>
     )
   }
-  
+ 
+
 
   return (
     <>
@@ -53,7 +54,9 @@ function App() {
      {loading ? (
         <Loader/>
       ) : (
-        <div className=" grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 ">
+        <div className="w-full flex justify-center">
+        <div className="max-w-[1400px] grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 ">
+       
         {news.map((article, index) => (
           <div className="bg-white rounded-lg shadow-md overflow-hidden " key={index}>
             <div className="bg-slate-400 m-2 rounded-3xl overflow-hidden">
@@ -74,6 +77,7 @@ function App() {
             </div>
           </div>
         ))}
+      </div>
       </div>
       )}
     </>
