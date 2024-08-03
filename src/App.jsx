@@ -7,7 +7,8 @@ import Loader from "./components/Loader";
 function App() {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(false); 
+ const [section,setsection]=useState("")
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -24,10 +25,66 @@ function App() {
       setLoading(false);
     }
     };
+    
     fetchNews();
   }, []);
    
-
+ const handleHealth=async()=>{
+  try{
+    const newresponse = await axios.get(
+      `https://api.nytimes.com/svc/topstories/v2/Health.json?api-key=AOFvSfzLSamsmw3uggBysZ3UgrIu2Kqk`    
+    );
+    const datas = newresponse.data;     
+    setNews(datas.results);
+    setLoading(false);
+  }
+  catch(error){ 
+    setError(true);
+    setLoading(false);
+  }
+ }
+ const handlehome=async()=>{
+  try{
+    const newresponse = await axios.get(
+      `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=AOFvSfzLSamsmw3uggBysZ3UgrIu2Kqk`    
+    );
+    const datas = newresponse.data;     
+    setNews(datas.results);
+    setLoading(false);
+  }
+  catch(error){ 
+    setError(true);
+    setLoading(false);
+  }
+ }
+ const handletechnology=async()=>{
+  try{
+    const newresponse = await axios.get(
+      `https://api.nytimes.com/svc/topstories/v2/technology.json?api-key=AOFvSfzLSamsmw3uggBysZ3UgrIu2Kqk`    
+    );
+    const datas = newresponse.data;     
+    setNews(datas.results);
+    setLoading(false);
+  }
+  catch(error){ 
+    setError(true);
+    setLoading(false);
+  }
+ }
+ const handlebusiness=async()=>{
+  try{
+    const newresponse = await axios.get(
+      `https://api.nytimes.com/svc/topstories/v2/business.json?api-key=AOFvSfzLSamsmw3uggBysZ3UgrIu2Kqk`    
+    );
+    const datas = newresponse.data;     
+    setNews(datas.results);
+    setLoading(false);
+  }
+  catch(error){ 
+    setError(true);
+    setLoading(false);
+  }
+ }
 
   if (error) {
     return (
@@ -54,9 +111,17 @@ function App() {
      {loading ? (
         <Loader/>
       ) : (
-        <div className="w-full flex justify-center">
+        <div className="w-full">
+          <div className="w-auto  flex justify-center md:gap-10 sm:gap-8 gap-2 lg:gap-11 lg:mt-4 lg:mb-4">
+          <div className="lg:text-2xl md:text-2xl hover:bg-black hover:text-white p-1 lg:p-2 rounded-xl cursor-pointer " onClick={handlehome}>Home</div>
+          <div className="lg:text-2xl md:text-2xl hover:bg-black hover:text-white p-1 lg:p-2 rounded-xl cursor-pointer" onClick={handleHealth}>Health</div>
+          <div className="lg:text-2xl md:text-2xl hover:bg-black hover:text-white p-1 lg:p-2 rounded-xl cursor-pointer" onClick={handletechnology}>Technology</div>
+          <div className="lg:text-2xl md:text-2xl hover:bg-black hover:text-white p-1 lg:p-2 rounded-xl cursor-pointer" onClick={handlebusiness}>Business</div>
+          </div>
+          
+          <div className="w-full flex justify-center">
         <div className="max-w-[1400px] grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 ">
-       
+        
         {news.map((article, index) => (
           <div className="bg-white rounded-lg shadow-md overflow-hidden " key={index}>
             <div className="bg-slate-400 m-2 rounded-3xl overflow-hidden">
@@ -77,6 +142,7 @@ function App() {
             </div>
           </div>
         ))}
+      </div>
       </div>
       </div>
       )}
